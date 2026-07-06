@@ -1,158 +1,67 @@
-# Ticket 1
-ages = [17, 11, 25, 13, 9]
-
-# PREDICT: 17, 25, and 13 will get Access granted. 11 and 9 will get Too young.
-for age in ages:
-    if age >= 13:
-        print(f"{age} — Access granted ✅")
-    else:
-        print(f"{age} — Too young ❌")
-    
-    # EXPLAIN: The variable age holds one age from the list each time the loop runs.
-
-# Ticket 2
-# PREDICT: If the user types "no" after the first check, the loop stops after that check.
-
-keep_checking = "yes"
-
-while keep_checking == "yes":
-    age = int(input("Enter an age: "))
-
-    if age >= 13:
-        print(f"{age} — Access granted ✅")
-    else:
-        print(f"{age} — Too young ❌")
-
-    keep_checking = input("Do you want to check another age? Type yes or no: ")
-
-# EXPLAIN: A while loop is better here because we do not know ahead of time how many ages the user wants to check.
-
-# Ticket 3
-# PREDICT: If I forgot the break statement, the loop would keep running forever.
-
-while True:
-    user_input = input("Enter an age or type stop: ")
-
-    if user_input == "stop":
-        break
-
-    age = int(user_input)
-
-    if age >= 13:
-        print(f"{age} — Access granted ✅")
-    else:
-        print(f"{age} — Too young ❌")
-
- # EXPLAIN: Ticket 2 repeats while the answer is yes, but Ticket 3 repeats forever until the user types stop and break ends the loop.
-
-# Ticket 4
-def can_access(age):
-    if age >= 13:
-        return True
-    else:
-        return False
-
-# PREDICT: The output is the same as Ticket 1, but the age check happens inside a function now.
-ages = [17, 11, 25, 13, 9]
-
-for age in ages:
-    if can_access(age):
-        print(f"{age} — Access granted ✅")
-    else:
-        print(f"{age} — Too young ❌")
-    
- # EXPLAIN: A function is better because I can reuse the same age-check code instead of writing the same if/else every time.
+# ============================================================
+# LAB 5 - WEEK 5 : The VibeCheck Bug Hunt
+# ============================================================
+# Name: Victoria
+#
+# This file is BROKEN on purpose. There are 8 bugs.
+# ============================================================
 
 
-# Ticket 5
-def signup_report(age_list):
-    approved = 0
+# ------------------------------------------------------------
+# PART 1 - A function that greets a user
+# ------------------------------------------------------------
 
-    print("--- StreamPass Signup Report ---")
-
-    for signup_number, age in enumerate(age_list, start=1):
-        if can_access(age):
-            print(f"Signup #{signup_number} | Age {age} — Access granted ✅")
-            approved += 1
-        else:
-            print(f"Signup #{signup_number} | Age {age} — Too young ❌")
-
-    print(f"Approved: {approved} out of {len(age_list)}")
+def send_vibe():
+    print("VibeCheck says: good energy only")
 
 
-# PREDICT:
-# --- StreamPass Signup Report ---
-# Signup #1 | Age 22 — Access granted ✅
-# Signup #2 | Age 10 — Too young ❌
-# Signup #3 | Age 15 — Access granted ✅
-# Signup #4 | Age 8 — Too young ❌
-# Signup #5 | Age 19 — Access granted ✅
-# Signup #6 | Age 13 — Access granted ✅
-# Approved: 4 out of 6
-
-signups = [22, 10, 15, 8, 19, 13]
-signup_report(signups)
-# EXPLAIN: A function is better because I can reuse the same age-check code instead of writing the same if/else every time.
+def welcome_user():
+    print("Welcome to VibeCheck!")
 
 
-# Ticket 5
-def signup_report(age_list):
-    approved = 0
+# ------------------------------------------------------------
+# PART 2 - A function that uses a variable
+# ------------------------------------------------------------
 
-    print("--- StreamPass Signup Report ---")
-
-    for signup_number, age in enumerate(age_list, start=1):
-        if can_access(age):
-            print(f"Signup #{signup_number} | Age {age} — Access granted ✅")
-            approved += 1
-        else:
-            print(f"Signup #{signup_number} | Age {age} — Too young ❌")
-
-    print(f"Approved: {approved} out of {len(age_list)}")
+def show_mood():
+    mood = "hyped"
+    print(f"Today's mood is {mood}")
 
 
-# PREDICT:
-# --- StreamPass Signup Report ---
-# Signup #1 | Age 22 — Access granted ✅
-# Signup #2 | Age 10 — Too young ❌
-# Signup #3 | Age 15 — Access granted ✅
-# Signup #4 | Age 8 — Too young ❌
-# Signup #5 | Age 19 — Access granted ✅
-# Signup #6 | Age 13 — Access granted ✅
-# Approved: 4 out of 6
+# ------------------------------------------------------------
+# PART 3 - A function with parameters
+# ------------------------------------------------------------
 
-signups = [22, 10, 15, 8, 19, 13]
-signup_report(signups)
-# EXPLAIN: A function is better because I can reuse the same age-check code instead of writing the same if/else every time.
+def make_shoutout(name, mood):
+    return f"{name} is feeling {mood} today!"
 
 
-# Ticket 5
-def signup_report(age_list):
-    approved = 0
+# ------------------------------------------------------------
+# PART 4 - A function that counts hype points
+# ------------------------------------------------------------
 
-    print("--- StreamPass Signup Report ---")
-
-    for signup_number, age in enumerate(age_list, start=1):
-        if can_access(age):
-            print(f"Signup #{signup_number} | Age {age} — Access granted ✅")
-            approved += 1
-        else:
-            print(f"Signup #{signup_number} | Age {age} — Too young ❌")
-
-    print(f"Approved: {approved} out of {len(age_list)}")
+def count_hype(likes, shares):
+    total = likes + shares
+    return total
 
 
-# PREDICT:
-# --- StreamPass Signup Report ---
-# Signup #1 | Age 22 — Access granted ✅
-# Signup #2 | Age 10 — Too young ❌
-# Signup #3 | Age 15 — Access granted ✅
-# Signup #4 | Age 8 — Too young ❌
-# Signup #5 | Age 19 — Access granted ✅
-# Signup #6 | Age 13 — Access granted ✅
-# Approved: 4 out of 6
+# ============================================================
+# RUNNING THE CODE - do not move these calls above the
+# functions they use
+# ============================================================
 
-signups = [22, 10, 15, 8, 19, 13]
-signup_report(signups)
+send_vibe()
+welcome_user()
+show_mood()
 
-# EXPLAIN: I used lists, for loops, while loops, while True, input, int, if/else conditionals, functions, return values, enumerate, a counter variable, and len().
+print(make_shoutout("Jordan", "creative"))
+print(make_shoutout("Alex", "chill"))
+
+print(count_hype(10, 5))
+
+
+def final_message():
+    print("Thanks for using VibeCheck!")
+
+
+final_message()
