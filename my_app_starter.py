@@ -1,3 +1,5 @@
+import random
+
 # ============================================================
 # LAB 7 - MY OWN ORDERING APP
 # Week 7 - Hack the Hood
@@ -49,7 +51,8 @@ class Drink(Chip):
 item1 = Chip("Spicy Chips", 3.50)
 item2 = Drink("Lemonade", 2.50)
 
-print(item1.name)
+
+# print(item1.name)
 
 
 # TICKET 3: Test the price guard
@@ -57,7 +60,7 @@ print(item1.name)
 # PREDICT:
 # It will print "Price cannot be below zero."
 
-item1.set_price(-5)
+# item1.set_price(-5)
 
 # Paste the message you see here:
 # Price cannot be below zero.
@@ -95,11 +98,22 @@ store = {
 }
 
 cart = Cart()
+welcome_messages = [
+    "Welcome to my Snack Shop!",
+    "Hey there, happy shopping!",
+    "Thanks for visiting my snack store!"
+]
 
-print("\nWelcome to my Snack Shop!")
-print("1. Spicy Chips - $3.50")
-print("2. Lemonade - $2.50")
+print(random.choice(welcome_messages))
 
+item1.set_price(2.50)
+print(item1.name + " is on sale for $" + str(item1.price) + "!")
+
+# print("\nWelcome to my Snack Shop!")
+print("Here is what we have:")
+
+for number, item in store.items():
+    print(number + ". " + item.name + " - $" + str(item.price))
 
 # TICKET 8: Let customers shop
 
@@ -115,7 +129,7 @@ while True:
         cart.add(store[choice])
         print(store[choice].name + " added!")
     else:
-        print("Invalid choice.")
+       print("Sorry, that's not on the menu!")
 
 
 # TICKET 10: Test the whole app
@@ -126,4 +140,9 @@ while True:
 # each item will perform its own action,
 # and the total will be $6.00.
 
+print("----- Your receipt -----")
+for item in cart.items:
+    print(item.name + " ..... $" + str(item.price))
+
+print("You bought " + str(len(cart.items)) + " items.")
 cart.checkout()
